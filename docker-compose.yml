@@ -1,28 +1,56 @@
 version: '3.7'
 
 services:
-  # front:
-    # image: node:16-alpine
-    # build:
-      # context: ./front
-      # dockerfile: Dockerfile
-    # ports:
-      # - 3000:3000
-    # volumes:
-      # - ./front:/app
+  front:
+    container_name: front
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    ports:
+      - 80:5000
+    restart: always
+    environment:
+      DEBUG: 1
+    volumes:
+      - ./front:/app
+    networks:
+      - mern_network
+    depends_on:
+      - mongodb
+      - back
 
   back:
-    # image: node:16-alpine
     build:
       context: ./back
       dockerfile: Dockerfile
-    ports:
-      - 3000:3000
+    container_name: back 
     volumes:
-      - ./back:/app
+      - ./back/:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+      # env_file: ./server/.env
+    environment:
+      - NODE_ENV=development
+    networks:
+      - mern_network
 
-  # mongodb:
-    # image: mongo:4.4
-    # ports:
-      # - 27017:27017
+  mongodb:
+    image: mongo:4.4
+    container_name: db
+    ports:
+      - 27017:27017
+    networks:
+      - mern_network
+
+
+
+
+
+
+networks:
+  mern_network:
+    driver: bridge
 

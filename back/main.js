@@ -1,10 +1,36 @@
+// server.js
 const express = require('express');
 const app = express();
+const PORT = 3000;
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+    res.send("Hello World ! ");
 });
 
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
+app.listen(PORT, function () {
+    console.log(`Server Listening on ${PORT}`);
 });
+
+// Our DB Configuration
+require('./src/database');
+
+const bodyParser = require('body-parser');
+
+// Routes
+const postRouter = require('./src/routes/post.router');
+
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
+app.use(bodyParser.json());
+
+app.use('/posts', postRouter);
+
+router = express.Router();
+
+// will redirect all the non-api routes to react frontend
+// router.use(function(req, res) {
+    // res.sendFile(path.join(__dirname, '../client','build','index.html'));
+// });

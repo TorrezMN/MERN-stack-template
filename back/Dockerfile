@@ -1,20 +1,23 @@
+#  Dockerfile for Node Express Backend api (development)
 
-# Stage 1: Build the application
-FROM node:16-alpine as builder
+FROM node:current-alpine
 
-WORKDIR /app
+# ARG NODE_ENV=development
 
-COPY package.json .
+# Create App Directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-RUN npm install
+# Install Dependencies
+COPY package*.json ./
 
-# Stage 2: Create the production image
-FROM node:16-alpine
+RUN npm ci
 
-WORKDIR /app
+# Copy app source code
+COPY . .
 
-COPY --from=builder /app .
-
+# Exports
 EXPOSE 3000
 
-CMD ["node", "main.js"]
+CMD ["npm","start"]
+
