@@ -23,7 +23,8 @@ services:
     build:
       context: ./back
       dockerfile: Dockerfile
-    container_name: back 
+    container_name: back
+    env_file: ./back/.env
     volumes:
       - ./back/:/usr/src/app
       - /usr/src/app/node_modules
@@ -31,7 +32,6 @@ services:
       - "3000:3000"
     depends_on:
       - mongodb
-      # env_file: ./server/.env
     environment:
       - NODE_ENV=development
     networks:
@@ -40,6 +40,10 @@ services:
   mongodb:
     image: mongo:4.4
     container_name: db
+    environment:
+      - MONGO_INITDB_DATABASE= 'nose_que_mierda'
+      - MONGO_INITDB_ROOT_PASSWORD= 'la_re_contrasena'
+      - MONGO_INITDB_ROOT_USERNAME= 'soy_yo'
     ports:
       - 27017:27017
     networks:
