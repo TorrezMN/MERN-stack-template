@@ -7,6 +7,10 @@ app.get('/', (req, res) => {
     res.send("Hello World ! ");
 });
 
+app.get('/tests', (req, res) => {
+    res.send("ESTA ES UNA URL PARA TEST! ");
+});
+
 app.listen(PORT, function () {
     console.log(`Server Listening on ${PORT}`);
 });

@@ -14,7 +14,7 @@ services:
     volumes:
       - ./front:/app
     networks:
-      - mern_network
+      - MERN_network
     depends_on:
       - mongodb
       - back
@@ -24,7 +24,7 @@ services:
       context: ./back
       dockerfile: Dockerfile
     container_name: back
-    env_file: ./back/.env
+    restart: always
     volumes:
       - ./back/:/usr/src/app
       - /usr/src/app/node_modules
@@ -32,10 +32,14 @@ services:
       - "3000:3000"
     depends_on:
       - mongodb
+    env_file: ./back/.env
     environment:
+      - MONGO_INITDB_DATABASE= 'nose_que_mierda'
+      - MONGO_INITDB_ROOT_PASSWORD= 'la_re_contrasena'
+      - MONGO_INITDB_ROOT_USERNAME= 'soy_yo'
       - NODE_ENV=development
     networks:
-      - mern_network
+      - MERN_network
 
   mongodb:
     image: mongo:4.4
@@ -47,7 +51,7 @@ services:
     ports:
       - 27017:27017
     networks:
-      - mern_network
+      - MERN_network
 
 
 
@@ -55,6 +59,6 @@ services:
 
 
 networks:
-  mern_network:
+  MERN_network:
     driver: bridge
 

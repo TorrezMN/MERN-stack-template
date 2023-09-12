@@ -2,6 +2,20 @@ const express = require('express');
 const postRouter = express.Router();
 const Post = require('../models/post.model'); // post model
 
+
+
+// Get all posts.
+// postRouter.get('/', async (req,res)=>{
+  // try {
+    // const posts = await Post.find()
+    // res.json(posts)
+  // } catch (err) {
+    // res.status(500).json({message:err.message})
+  // }
+// });
+
+
+
 /* Get all Posts */
 postRouter.get('/', (req, res, next) => {
     Post.find({} , function(err, result){
@@ -35,27 +49,22 @@ postRouter.get("/:post_id", (req, res, next) => {
 });
 
 
-/* Add Single Post */
-postRouter.post("/", (req, res, next) => {
+// Creating one
+postRouter.post('/', async (req, res) => {
   let newPost = {
     title: req.body.title,
     body: req.body.body,
     author: req.body.author
   };
-   Post.create(newPost, function(err, result) {
-    if(err){
-        res.status(400).send({
-          success: false,
-          error: err.message
-        });
-    }
-      res.status(201).send({
-        success: true,
-        data: result,
-        message: "Post created successfully"
-      });
-  });
-});
+  const post_a_crear = new Post(newPost)
+  try {
+    const NEWPOST = await post_a_crear.save()
+    res.status(201).json(NEWPOST)
+  } catch (err) {
+    res.status(400).json({ message: err.message })
+  }
+})
+
 
 /* Edit Single Post */
 postRouter.patch("/:post_id", (req, res, next) => {
