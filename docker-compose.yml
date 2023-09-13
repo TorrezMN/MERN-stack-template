@@ -44,6 +44,8 @@ services:
   mongodb:
     image: mongo:4.4
     container_name: db
+    volumes:
+      - ./db:/data/db
     environment:
       - MONGO_INITDB_DATABASE= 'nose_que_mierda'
       - MONGO_INITDB_ROOT_PASSWORD= 'la_re_contrasena'
