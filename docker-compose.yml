@@ -26,7 +26,7 @@ services:
     container_name: back
     restart: always
     volumes:
-      - ./back:/app
+      - ./back/src:/src
     ports:
       - "3000:3000"
     depends_on:

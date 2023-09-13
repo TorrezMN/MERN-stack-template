@@ -4,24 +4,39 @@ const app = express();
 const PORT = 3000;
 
 app.get('/', (req, res) => {
-    res.send("Hello World !\nifasdfasd ");
+  const test_data = {
+    la_mierda6: 'sd3333333333333333333333333333333333333333333333jf',
+    la_mierda7: 'sd33333333AAAAAAAAAAAAAAAAAAAAAAAAAqqqqqqqqqqqqqq',
+    la_mierda8: 'sd33333333AAAAAAAAAAAAAAAAAA33332222222222222222222222',
+  }
+    res.send(test_data);
 });
 
 app.get('/tests', (req, res) => {
     res.send("ESTA ES UNA URL PARA TEST! ");
 });
 
+app.get('/la_mierda_digo', (req, res) => {
+    res.send("ESTA MIERDA NO ANDA!!! ");
+});
+
+
+
+
+
 app.listen(PORT, function () {
     console.log(`Server Listening on ${PORT}`);
 });
 
 // Our DB Configuration
-require('./src/database');
+// require('./src/database');
+require('./database');
 
 const bodyParser = require('body-parser');
 
 // Routes
-const postRouter = require('./src/routes/post.router');
+// const postRouter = require('./src/routes/post.router');
+const postRouter = require('./routes/post.router');
 
 app.use(
   bodyParser.urlencoded({

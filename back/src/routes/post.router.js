@@ -15,6 +15,10 @@ const Post = require('../models/post.model'); // post model
 // });
 
 
+postRouter.get('/post_test', (req, res) => {
+    res.send("POlllfkasdjflakjsdfñlkajsñdfljañsdlfkjañ TEST DE MIERDA!");
+});
+
 
 /* Get all Posts */
 postRouter.get('/', (req, res, next) => {
