@@ -26,8 +26,7 @@ services:
     container_name: back
     restart: always
     volumes:
-      - ./back/:/usr/src/app
-      - /usr/src/app/node_modules
+      - ./back:/app
     ports:
       - "3000:3000"
     depends_on:
