@@ -26,7 +26,9 @@ services:
     container_name: back
     restart: always
     volumes:
-      - ./back/src:/src
+      - ./back:/usr/src/app
+      - /usr/src/app/node_modules
+      # - ./back/src:/src
     ports:
       - "3000:3000"
     depends_on:
@@ -39,6 +41,8 @@ services:
       - NODE_ENV=development
     networks:
       - MERN_network
+    # command: nodemon --watch ./src/ --exec npm start
+
 
   mongodb:
     image: mongo:4.4
