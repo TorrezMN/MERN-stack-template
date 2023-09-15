@@ -5,10 +5,7 @@ const PORT = 3000;
 
 app.get('/', (req, res) => {
   const test_data = {
-    la_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA: 'ESTE ES EL nuevo cambio la re puta madre!',
     la_238: 'ESTE ES EL nuevo cambio la re puta madre!',
-    la_242: 'ESTE ES EL nuevo cambio la re puta madre!',
-    la_mierda7: 'ESTE ES EL CAMBIO A REFLEJAR!',
     la_mierda8: 'sjlkfd33333333AAAAAAAAAAAAAAAAAA33332222222222222222222222',
   }
     res.send(test_data);
