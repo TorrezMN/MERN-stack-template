@@ -10,7 +10,8 @@ services:
       - 80:5000
     restart: always
     environment:
-      DEBUG: 1
+      - CHOKIDAR_USEPOLLING=true
+      # DEBUG: 1
     volumes:
       - ./front:/app
     networks:
