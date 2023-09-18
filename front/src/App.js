@@ -9,6 +9,7 @@ function App() {
         <center>
             <h2>This is my app.</h2>
             <h2>This is my app.</h2>
+            <h2>LA RE MIL PUTA!.</h2>
         </center>
         <a
           className="App-link"
