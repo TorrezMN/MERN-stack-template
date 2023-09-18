@@ -1,0 +1,14 @@
+FROM node:18.12.1-buster-slim 
+
+# Create App Directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+# Cache dependencies
+COPY package.json package-lock.json ./
+RUN npm ci --only=cache
+
+# Copy source code
+COPY . .
+
+CMD ["npm", "run", "dev"]
