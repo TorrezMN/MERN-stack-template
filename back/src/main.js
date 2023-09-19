@@ -5,13 +5,7 @@ const PORT = 3000;
 
 app.get('/', (req, res) => {
   const test_data = {
-    la_238: 'ESTE ES EL nuevo cambio la re puta madre!',
-    la_247: 'ESTE ES EL nuevo cambio la re  madre!',
-    la_244: 'ESTE ES EL nuevo cambio la readre!',
-    la_251: 'ESTE ES EL e puta madre!',
-    la_250: 'ESTE ES EL nuevo cambio la re puta madre!',
-    la_252: 'ESTE ES EL nuevo cambio la re puta madre!',
-    la_mierda8: 'sjlkfd33333333AAAAAAAAAAAAAAAAAA33332222222222222222222222',
+    test_data: 'sjlkfd33333333AAAA',
   }
     res.send(test_data);
 });

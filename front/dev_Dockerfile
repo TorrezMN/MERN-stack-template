@@ -6,9 +6,12 @@ WORKDIR /usr/src/app
 
 # Cache dependencies
 COPY package.json package-lock.json ./
-RUN npm ci --only=cache
+RUN npm ci
 
 # Copy source code
 COPY . .
+
+# Exports
+EXPOSE 3000
 
 CMD ["npm", "run", "dev"]

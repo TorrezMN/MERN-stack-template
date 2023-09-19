@@ -8,9 +8,6 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <center>
             <h2>This is my app.</h2>
-            <h2>LA RE MIL PUTA! - 124234235253453453453453423.</h2>
-            <h2>LA RE MIL PUTA! - 124234235253453453453453423.</h2>
-            <h2>This is my app.</h2>
         </center>
         <a
           className="App-link"
