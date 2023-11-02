@@ -38,7 +38,7 @@ sh run_prod.sh
 sh run_dev.sh
 ```
 
-Now you can se the project running at:
+Now you can see the project at the following url:
 
 ```
 https://localhost/
